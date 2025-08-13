@@ -2,61 +2,141 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Consulta</title>
   <link rel="stylesheet" href="estilo.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fafafa;
     }
+
+    nav {
+      background-color: #ff7b00;
+      padding: 15px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav h2 {
+      color: #fff;
+      margin: 0;
+      font-size: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 16px;
+      transition: opacity 0.3s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
     .main {
       padding: 20px;
       text-align: justify;
       line-height: 1.6;
+      max-width: 900px;
+      margin: auto;
     }
+
     h1, h2 {
-      text-align: left;
       color: #444;
     }
+
     ul {
       padding-left: 20px;
     }
+
     ul li {
       margin-bottom: 8px;
     }
+
     ul li strong {
       color: #000;
     }
+
     .contato {
       background-color: #fff8e1;
-      padding: 40px;
+      padding: 20px;
       border-radius: 12px;
       color: #333;
       margin-top: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
+
     .contato p {
       margin-bottom: 12px;
       font-size: 16px;
       line-height: 1.6;
-      text-align: justify;
     }
+
     .contato a {
       color: #ff7b00;
       text-decoration: none;
       font-weight: bold;
     }
+
     .contato a:hover {
       text-decoration: underline;
     }
+
     .whatsapp-botao {
       margin-top: 20px;
+      text-align: center;
     }
+
     .whatsapp-botao img {
-      width: 180px;
+      max-width: 100%;
+      height: auto;
+      width: 200px;
       transition: transform 0.3s ease;
     }
+
     .whatsapp-botao img:hover {
       transform: scale(1.05);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        margin: 5px 0;
+      }
+      .main {
+        padding: 15px;
+      }
+      .contato {
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav h2 {
+        font-size: 18px;
+      }
+      nav a {
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      .whatsapp-botao img {
+        width: 160px;
+      }
     }
   </style>
 </head>
@@ -64,11 +144,13 @@
 
   <nav>
     <h2>Veterinária Floramar</h2>
-    <a href="index.html">Início</a>
-    <a href="servicos.html">Serviços</a>
-    <a href="agendamento.html">Agendamento</a>
-    <a href="contato.html">Contato</a>
-    <a href="jogos.html">Jogos</a>
+    <div>
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="agendamento.html">Agendamento</a>
+      <a href="contato.html">Contato</a>
+      <a href="jogos.html">Jogos</a>
+    </div>
   </nav>
 
   <div class="main">
