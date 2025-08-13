@@ -6,7 +6,7 @@ body {
   height: 100vh;
 }
 
-/* MENU LATERAL - Padronizado com estilo.css */
+/* MENU LATERAL */
 nav {
   width: 250px;
   background-color: #ff7b00;
@@ -128,4 +128,47 @@ p {
 
 #restartButton:hover {
   background-color: #e67e22;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    height: auto;
+  }
+
+  nav {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  nav h2 {
+    flex: 1 100%;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  nav a {
+    margin: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 20px;
+  }
+
+  .memory-game {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* mantém formato quadrado */
+  }
 }
