@@ -45,7 +45,6 @@ nav a:hover {
 
 /* CONTEÚDO PRINCIPAL */
 .main {
-  flex: 1;
   padding: 40px;
   background-color: #fff8e1;
   overflow-y: auto;
@@ -69,10 +68,8 @@ img.scooby {
   overflow: hidden;
   border: 4px solid #ff7b00;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-
-  /* POSICIONAMENTO: */
-  margin-left: 15px;   /* desloca para a direita */
-  margin-top: 1cm;     /* desloca 1 centímetro para baixo */
+  margin-left: 15px;
+  margin-top: 1cm;
 }
 
 .characters {
@@ -101,12 +98,11 @@ img.scooby {
   font-weight: bold;
   color: #444;
 }
+
 .card-img:hover {
-  border-color: #ff9800; /* laranja mais vivo */
+  border-color: #ff9800;
   box-shadow: 0 0 20px 5px #ff9800;
   transition: all 0.3s ease-in-out;
-}
-
 }
 
 .legenda {
@@ -168,8 +164,8 @@ h1 {
 .back-face {
   background: #ffd180;
 }
-/* Estilo para a página de Serviços */
 
+/* Estilo para a página de Serviços */
 .main h1 {
   font-size: 32px;
   color: #ff7b00;
@@ -189,13 +185,14 @@ h1 {
   color: #444;
   margin-bottom: 20px;
 }
+
 .main ul li {
-	  list-style: none;
+  list-style: none;
   font-size: 18px;
   margin-bottom: 10px;
   padding-left: 28px;
   position: relative;
-  white-space: normal; /* permite quebra de linha */
+  white-space: normal;
   word-wrap: break-word;
 }
 
@@ -212,18 +209,67 @@ h1 {
   font-size: 18px;
   color: #333;
   padding: 30px 40px;
-  max-width: 900px; /* aumentado para mais espaço horizontal */
+  max-width: 900px;
   margin: 10px auto;
 }
+
 .contato p {
   margin-bottom: 12px;
   font-size: 16px;
   line-height: 1.6;
   text-align: justify;
 }
+
 .banho p {
-	margin-bottom: 12px;
-	font-size: 16px;
-	line-height: 1.6;
-	text-align: justify;
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    height: auto;
+  }
+
+  nav {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  nav h2 {
+    flex: 1 100%;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  nav a {
+    margin: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 20px;
+  }
+
+  .card-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .characters {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .memory-game {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
 }
