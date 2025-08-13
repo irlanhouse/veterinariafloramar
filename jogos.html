@@ -2,9 +2,112 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jogo da Memória - Veterinária Floramar</title>
   <link rel="stylesheet" href="estilo.css">
   <link rel="stylesheet" href="jogo.css">
+  <style>
+    /* Ajustes básicos para responsividade */
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background-color: #0077cc;
+      color: white;
+      padding: 1em;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1em;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .main {
+      flex: 1;
+      padding: 2em;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    #message {
+      margin: 1em 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #restartButton {
+      margin-bottom: 1.5em;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .memory-game {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1em;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* Mantém quadrado */
+      perspective: 1000px;
+    }
+
+    .card img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.6s;
+      backface-visibility: hidden;
+    }
+
+    .front-face {
+      transform: rotateY(0deg);
+    }
+
+    .back-face {
+      transform: rotateY(180deg);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        min-width: auto;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+      }
+
+      .main {
+        padding: 1em;
+        padding-bottom: 5em; /* espaço pro menu fixo */
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -23,15 +126,12 @@
     <h1>Jogo da Memória dos Pets!</h1>
     <p>Encontre todos os pares para vencer 🧠🐾</p>
 
-    <!-- Mensagem de feedback -->
     <div id="message"></div>
-	
-	<div id="message"></div>
-<button id="restartButton">🔁 Reiniciar Jogo</button>
-
+    <button id="restartButton">🔁 Reiniciar Jogo</button>
 
     <!-- Área do jogo -->
     <div class="memory-game">
+      <!-- Cartas do jogo -->
       <div class="card" data-character="banho">
         <img class="front-face" src="banho.png" alt="Scooby">
         <img class="back-face" src="question.jpg" alt="Verso">
