@@ -3,7 +3,7 @@ let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let matchCount = 0;
-const totalPairs = 4; // temos 4 pares
+const totalPairs = 4;
 const message = document.getElementById('message');
 
 function flipCard() {
@@ -41,8 +41,9 @@ function checkForMatch() {
 
 function disableCards() {
   firstCard.removeEventListener('click', flipCard);
+  firstCard.removeEventListener('touchstart', flipCard);
   secondCard.removeEventListener('click', flipCard);
-
+  secondCard.removeEventListener('touchstart', flipCard);
   resetBoard();
 }
 
@@ -57,40 +58,32 @@ function unflipCards() {
 }
 
 function resetBoard() {
-  [hasFlippedCard, lockBoard] = [false, false];
-  [firstCard, secondCard] = [null, null];
+  hasFlippedCard = false;
+  lockBoard = false;
+  firstCard = null;
+  secondCard = null;
 }
 
-(function shuffle() {
-  cards.forEach(card => {
-    let ramdomPos = Math.floor(Math.random() * 12);
-    card.style.order = ramdomPos;
-  });
-})();
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-
-document.getElementById('restartButton').addEventListener('click', () => {
-  // Zera tudo
-  matchCount = 0;
-  message.textContent = '';
-  
-  // Desvira todas as cartas
-  cards.forEach(card => {
-    card.classList.remove('flip');
-    card.addEventListener('click', flipCard);
-  });
-
-  // Embaralha de novo
-  setTimeout(() => {
-    shuffle();
-  }, 500);
-});
-
-// Refatorar a função shuffle (se ainda não for assim):
 function shuffle() {
   cards.forEach(card => {
-    let randomPos = Math.floor(Math.random() * 12);
+    let randomPos = Math.floor(Math.random() * cards.length);
     card.style.order = randomPos;
   });
 }
+
+// Inicializa
+shuffle();
+
+cards.forEach(card => {
+  card.addEventListener('click', flipCard);
+  card.addEventListener('touchstart', flipCard, { passive: true });
+});
+
+// Botão reiniciar
+document.getElementById('restartButton').addEventListener('click', () => {
+  matchCount = 0;
+  message.textContent = '';
+
+  cards.forEach(card => {
+    card.classList.remove('flip');
+    card.addEventListener('click', flip
