@@ -3,8 +3,9 @@ let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let matchCount = 0;
-const totalPairs = 4; // temos 4 pares
+const totalPairs = 4;
 const message = document.getElementById('message');
+const restartButton = document.getElementById('restartButton');
 
 function flipCard() {
   if (lockBoard || this === firstCard) return;
@@ -22,7 +23,7 @@ function flipCard() {
 }
 
 function checkForMatch() {
-  let isMatch = firstCard.dataset.character === secondCard.dataset.character;
+  const isMatch = firstCard.dataset.character === secondCard.dataset.character;
 
   if (isMatch) {
     message.textContent = "✅ Acertou!";
@@ -42,7 +43,6 @@ function checkForMatch() {
 function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
-
   resetBoard();
 }
 
@@ -53,7 +53,7 @@ function unflipCards() {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
     resetBoard();
-  }, 1000);
+  }, 800);
 }
 
 function resetBoard() {
@@ -61,36 +61,26 @@ function resetBoard() {
   [firstCard, secondCard] = [null, null];
 }
 
-(function shuffle() {
-  cards.forEach(card => {
-    let ramdomPos = Math.floor(Math.random() * 12);
-    card.style.order = ramdomPos;
-  });
-})();
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-
-document.getElementById('restartButton').addEventListener('click', () => {
-  // Zera tudo
-  matchCount = 0;
-  message.textContent = '';
-  
-  // Desvira todas as cartas
-  cards.forEach(card => {
-    card.classList.remove('flip');
-    card.addEventListener('click', flipCard);
-  });
-
-  // Embaralha de novo
-  setTimeout(() => {
-    shuffle();
-  }, 500);
-});
-
-// Refatorar a função shuffle (se ainda não for assim):
 function shuffle() {
   cards.forEach(card => {
     let randomPos = Math.floor(Math.random() * 12);
     card.style.order = randomPos;
   });
 }
+
+(function init() {
+  shuffle();
+  cards.forEach(card => card.addEventListener('click', flipCard));
+})();
+
+restartButton.addEventListener('click', () => {
+  matchCount = 0;
+  message.textContent = '';
+  
+  cards.forEach(card => {
+    card.classList.remove('flip');
+    card.addEventListener('click', flipCard);
+  });
+
+  setTimeout(shuffle, 400);
+});
