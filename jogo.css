@@ -9,9 +9,10 @@ body {
   background: #fff8e1;
   margin: 0;
   display: flex;
-  height: 100vh;
-  overflow: hidden;
+  /* height: auto; ou remova height */
+  min-height: 100vh; /* Se quiser que ocupe no mínimo a tela toda */
 }
+
 
 /* Menu lateral */
 nav {
@@ -166,3 +167,4 @@ p {
     padding: 20px 10px;
   }
 }
+
